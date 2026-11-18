@@ -1,0 +1,671 @@
+/* ==========================================================================
+   CryptoLab - Diffie-Hellman Key Exchange Simulator
+   Interactive Animated Algorithm Simulator Styles (High-Legibility Theme)
+   ========================================================================== */
+
+.sim-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+/* Master Control Console */
+.control-console-card {
+  background: linear-gradient(135deg, rgba(18, 22, 32, 0.96), rgba(28, 22, 38, 0.96));
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2.25rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.console-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.console-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.console-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Control Buttons - Large, tactile and readable */
+.btn-ctrl {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1.35rem;
+  font-size: 0.98rem;
+  font-weight: 650;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-card);
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-ctrl:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-ctrl.btn-start {
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: #03150d;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+  font-weight: 750;
+}
+
+.btn-ctrl.btn-start:hover:not(:disabled) {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+}
+
+.btn-ctrl.btn-pause {
+  background: rgba(251, 191, 36, 0.18);
+  color: #fde68a;
+  border-color: rgba(251, 191, 36, 0.45);
+}
+
+.btn-ctrl.btn-pause:hover:not(:disabled) {
+  background: rgba(251, 191, 36, 0.28);
+  box-shadow: 0 0 18px rgba(251, 191, 36, 0.4);
+}
+
+.btn-ctrl.btn-resume {
+  background: rgba(52, 211, 153, 0.18);
+  color: #a7f3d0;
+  border-color: rgba(52, 211, 153, 0.45);
+}
+
+.btn-ctrl.btn-resume:hover:not(:disabled) {
+  background: rgba(52, 211, 153, 0.28);
+  box-shadow: 0 0 18px rgba(52, 211, 153, 0.4);
+}
+
+.btn-ctrl:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* 4-Stage Stepper Progress Tracker */
+.stages-progress-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.stage-tab {
+  background: rgba(16, 19, 28, 0.75);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.stage-tab:hover {
+  background: rgba(24, 29, 42, 0.85);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.stage-tab.active {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.25);
+}
+
+.stage-tab.completed {
+  border-color: rgba(52, 211, 153, 0.5);
+  background: rgba(52, 211, 153, 0.08);
+}
+
+.stage-num-badge {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.stage-tab.active .stage-num-badge {
+  background: var(--accent-cyan);
+  color: #03150d;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 14px var(--accent-cyan);
+}
+
+.stage-tab.completed .stage-num-badge {
+  background: #10b981;
+  color: #03150d;
+  border-color: #10b981;
+}
+
+.stage-tab-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.stage-label {
+  font-size: 0.825rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  font-weight: 700;
+}
+
+.stage-tab.active .stage-label {
+  color: var(--accent-cyan);
+}
+
+.stage-title {
+  font-size: 1.025rem;
+  font-weight: 750;
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+/* Stage Educational Callout */
+.stage-explanation-box {
+  background: rgba(14, 17, 25, 0.95);
+  border-left: 5px solid var(--accent-cyan);
+  border-radius: var(--radius-sm);
+  padding: 1.35rem 1.65rem;
+  margin-top: 1.25rem;
+  font-size: 1.075rem;
+  color: var(--text-body);
+  line-height: 1.7;
+  animation: fadeIn 0.3s ease;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.stage-explanation-box strong {
+  color: #ffffff;
+  font-weight: 750;
+}
+
+/* Universal Stepper Highlight Class */
+.highlight {
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 0 0 32px rgba(16, 185, 129, 0.45) !important;
+  transition: all var(--transition-normal);
+}
+
+/* Parameter Grid (Section 1) */
+.params-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+  align-items: end;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.input-label {
+  font-size: 1.025rem;
+  font-weight: 650;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sim-input {
+  width: 100%;
+  background: rgba(11, 17, 32, 0.9);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1.25rem;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.sim-input:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.35);
+  background: rgba(18, 21, 30, 0.98);
+}
+
+.validation-msg {
+  font-size: 0.925rem;
+  min-height: 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+}
+
+.validation-msg.error {
+  color: #fb7185;
+}
+
+.validation-msg.success {
+  color: #34d399;
+}
+
+/* THREE-PARTICIPANT ANIMATED STAGE */
+.sim-stage-arena {
+  display: grid;
+  grid-template-columns: 330px 1fr 330px;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+/* Participant Cards */
+.party-arena-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(16px);
+  position: relative;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.party-arena-card.alice-side {
+  border-top: 4px solid var(--accent-cyan);
+}
+
+.party-arena-card.bob-side {
+  border-top: 4px solid var(--accent-violet);
+}
+
+/* Active Participant Glow */
+.party-arena-card.active-participant {
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 0 0 35px rgba(16, 185, 129, 0.4) !important;
+  transform: translateY(-4px);
+}
+
+.party-arena-card.bob-side.active-participant {
+  border-color: var(--accent-violet) !important;
+  box-shadow: 0 0 35px rgba(192, 132, 252, 0.4) !important;
+}
+
+.party-avatar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.35rem;
+}
+
+.party-name-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.avatar-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 850;
+  font-size: 1.35rem;
+}
+
+.alice-side .avatar-circle {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--accent-cyan);
+  border: 2px solid var(--accent-cyan);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.35);
+}
+
+.bob-side .avatar-circle {
+  background: rgba(192, 132, 252, 0.2);
+  color: var(--accent-violet);
+  border: 2px solid var(--accent-violet);
+  box-shadow: 0 0 16px rgba(192, 132, 252, 0.35);
+}
+
+/* Privacy Badges */
+.privacy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.825rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.privacy-badge.private {
+  background: rgba(251, 113, 133, 0.18);
+  color: #fb7185;
+  border: 1px solid rgba(251, 113, 133, 0.35);
+}
+
+.privacy-badge.public {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+/* Data Value Tile Blocks */
+.val-tile {
+  background: rgba(13, 16, 24, 0.85);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  margin-bottom: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.val-tile.computing {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+  animation: pulseGlow 1.5s infinite;
+}
+
+.val-tile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+}
+
+.val-tile-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.val-tile-formula {
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  color: var(--text-muted);
+}
+
+.val-tile-num {
+  font-family: var(--font-mono);
+  font-size: 1.55rem;
+  font-weight: 850;
+}
+
+.val-tile-num.cyan {
+  color: var(--accent-cyan);
+}
+
+.val-tile-num.violet {
+  color: var(--accent-violet);
+}
+
+.val-tile-num.emerald {
+  color: #fbbf24;
+}
+
+/* CENTER COMMUNICATION CHANNEL WITH EVE */
+.channel-arena-card {
+  background: rgba(18, 21, 30, 0.92);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Eve Eavesdropper Monitor Box */
+.eve-monitor-hud {
+  background: rgba(35, 14, 22, 0.85);
+  border: 1px solid rgba(251, 113, 133, 0.4);
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.eve-hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+
+.eve-hud-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1.05rem;
+  font-weight: 750;
+  color: var(--accent-red);
+}
+
+.eve-intel-chips {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.eve-chip {
+  background: rgba(10, 5, 8, 0.7);
+  border: 1px solid rgba(251, 113, 133, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fecdd3;
+}
+
+/* Communication Wire Arena (Animated Flight Tracks) */
+.channel-wire-stage {
+  position: relative;
+  height: 210px;
+  background: #080a0f;
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.wire-lane {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.wire-lane-label {
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.wire-beam {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.5), rgba(168, 85, 247, 0.5));
+}
+
+/* Animated Flying Data Packets - Larger and high visibility */
+.wire-packet {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.45rem 1.15rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  font-weight: 800;
+  white-space: nowrap;
+  z-index: 20;
+  transition: left 2.2s cubic-bezier(0.4, 0, 0.2, 1), right 2.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+.packet-alice-to-bob {
+  background: rgba(16, 185, 129, 0.25);
+  color: #6ee7b7;
+  border: 2px solid var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+  left: 10px;
+}
+
+.packet-bob-to-alice {
+  background: rgba(192, 132, 252, 0.3);
+  color: #e9d5ff;
+  border: 2px solid var(--accent-violet);
+  box-shadow: 0 0 20px rgba(192, 132, 252, 0.6);
+  right: 10px;
+}
+
+/* Flying Animation Active Classes */
+.packet-alice-to-bob.transit-active {
+  left: calc(100% - 110px);
+}
+
+.packet-bob-to-alice.transit-active {
+  right: calc(100% - 110px);
+}
+
+/* Channel Status Log */
+.channel-live-terminal {
+  background: #07090e;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  padding: 0.95rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.925rem;
+  color: #34d399;
+  min-height: 80px;
+  line-height: 1.6;
+}
+
+/* Final Verification Banner */
+.shared-secret-verify-card {
+  background: linear-gradient(135deg, rgba(6, 78, 59, 0.92), rgba(6, 44, 34, 0.96));
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.75rem;
+  box-shadow: 0 0 40px rgba(52, 211, 153, 0.3);
+  flex-wrap: wrap;
+}
+
+.verify-badge-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(52, 211, 153, 0.25);
+  border: 2px solid #34d399;
+  color: #34d399;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.math-proof-badge {
+  font-family: var(--font-mono);
+  background: rgba(0, 0, 0, 0.45);
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.05rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 8px rgba(16, 185, 129, 0.25); }
+  50% { box-shadow: 0 0 25px rgba(16, 185, 129, 0.65); }
+  100% { box-shadow: 0 0 8px rgba(16, 185, 129, 0.25); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .sim-stage-arena {
+    grid-template-columns: 1fr;
+  }
+  .stages-progress-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .channel-wire-stage {
+    height: 170px;
+  }
+}
+
+@media (max-width: 640px) {
+  .stages-progress-bar {
+    grid-template-columns: 1fr;
+  }
+}

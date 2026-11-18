@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Messaging Lab – CryptoLab</title>
+  <meta name="description" content="Interactive end-to-end secret messaging between Alice and Bob encrypted using the Diffie-Hellman negotiated key.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/messaging.css">
+</head>
+<body>
+  <!-- Global Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="brand-name">Crypto<span>Lab</span></div>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+
+      <ul class="nav-links">
+        <li>
+          <a href="index.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="exchange.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg>
+            Key Exchange Lab
+          </a>
+        </li>
+        <li>
+          <a href="messaging.html" class="nav-link active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/></svg>
+            Secret Messaging
+          </a>
+        </li>
+        <li>
+          <a href="attack.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Attack Simulation
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="container msg-lab-container">
+      
+      <!-- Page Header -->
+      <div class="page-header" style="margin-bottom: 1.25rem;">
+        <div class="badge badge-cyan">Symmetric Encryption in Action</div>
+        <h1>End-to-End Secret Messaging Lab</h1>
+        <p>
+          Experience why Diffie-Hellman matters! Use the negotiated shared secret key to encrypt, transmit, and decrypt confidential communications across an insecure wire while Eve intercepts in vain.
+        </p>
+      </div>
+
+      <!-- KEY SYNCHRONIZATION BAR -->
+      <section class="key-sync-banner">
+        <div class="key-sync-left">
+          <div>
+            <span style="font-size: 0.875rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Negotiated DH Secret Key</span>
+            <div style="font-size: 1.25rem; font-weight: 700; color: #fff;">Symmetric Session Cipher</div>
+          </div>
+          <div class="key-sync-badge">
+            K = <span id="shared-key-num">2</span>
+          </div>
+        </div>
+
+        <div class="key-sync-controls">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <input type="number" id="custom-key-input" class="sim-input" style="width: 100px; padding: 0.5rem 0.8rem; font-size: 0.95rem;" value="2" min="1">
+            <button id="btn-apply-key" class="btn btn-secondary" style="padding: 0.5rem 0.85rem; font-size: 0.925rem;">Change Key</button>
+          </div>
+
+          <div style="display: flex; gap: 1rem; margin-left: 0.5rem; flex-wrap: wrap;">
+            <label style="font-size: 0.925rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+              <input type="checkbox" id="chk-wrong-key">
+              Simulate Bob Having Wrong Key
+            </label>
+            <label style="font-size: 0.925rem; color: #fb7185; display: flex; align-items: center; gap: 0.4rem; cursor: pointer;">
+              <input type="checkbox" id="chk-tamper-eve">
+              Simulate Eve Tampering with Ciphertext
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- MESSAGING ARENA (ALICE TERMINAL - WIRE & EVE - BOB TERMINAL) -->
+      <section class="messaging-arena">
+        
+        <!-- ALICE TERMINAL (CLIENT A) -->
+        <div class="chat-terminal-card alice-terminal">
+          <div>
+            <div class="chat-header">
+              <div class="chat-user-info">
+                <div class="avatar-circle" style="width: 40px; height: 40px; font-size: 1.1rem; background: rgba(16, 185, 129, 0.2); color: var(--accent-cyan); border: 2px solid var(--accent-cyan);">A</div>
+                <div>
+                  <h4 style="font-size: 1.15rem; color: #fff;">Alice</h4>
+                  <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--text-dim);">
+                    <div class="chat-status-dot"></div> Encrypted with Key K
+                  </div>
+                </div>
+              </div>
+              <span class="badge badge-cyan" style="font-size: 0.85rem;">Sender A</span>
+            </div>
+
+            <!-- Feed -->
+            <div class="chat-feed-box" id="alice-chat-feed">
+              <div class="chat-bubble received">
+                <div>Hello Alice! Our Diffie-Hellman key exchange was successful. We can now message in secret!</div>
+                <div class="bubble-meta">Decrypted with Key K = 2</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Input Form -->
+          <div class="chat-input-form">
+            <div class="chat-input-row">
+              <input type="text" id="alice-msg-input" class="chat-msg-input" placeholder="Type a secret message as Alice..." value="Meet me at 5 PM at the secure lab!">
+              <button id="btn-alice-send" class="btn btn-primary" style="padding: 0.65rem 1.15rem; font-size: 0.95rem;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Send
+              </button>
+            </div>
+            <div style="font-size: 0.875rem; color: var(--text-dim);">
+              Click Send to encrypt with K and transmit across public wire.
+            </div>
+          </div>
+        </div>
+
+        <!-- CENTER: WIRE & EVE SNIFFER -->
+        <div class="wire-sniffer-card">
+          
+          <!-- Eve Sniffer HUD -->
+          <div class="sniffer-hud">
+            <div class="sniffer-hud-title">
+              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                Eve's Packet Sniffer
+              </div>
+              <span class="badge badge-red" style="font-size: 0.85rem;">Wire Tap</span>
+            </div>
+
+            <div class="intercepted-box" id="eve-intercept-log">
+              &gt; Sniffer listening on public transit wire...<br>
+              &gt; Waiting for encrypted ciphertext packet...
+            </div>
+
+            <div style="margin-top: 0.75rem; text-align: center;">
+              <button id="btn-eve-crack" class="btn btn-secondary" style="width: 100%; font-size: 0.875rem; padding: 0.5rem 0.85rem; border-color: rgba(244, 63, 94, 0.4); color: #fb7185;">
+                Attempt Decryption Without Key K
+              </button>
+            </div>
+          </div>
+
+          <!-- Animated Transit Beam -->
+          <div class="transit-wire-arena">
+            <div class="transit-wire-beam"></div>
+            <div id="flying-cipher-packet" class="flying-cipher-packet">
+              CIPHERTEXT: 4F A2 9B ...
+            </div>
+            <div style="position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); font-size: 0.85rem; color: var(--text-dim); text-transform: uppercase;">
+              Public Transit Wire
+            </div>
+          </div>
+
+          <div class="terminal-box" id="wire-live-status" style="margin: 0; min-height: 50px; font-size: 0.9rem; color: #34d399;">
+            &gt; Channel ready for symmetric ciphertext packets.
+          </div>
+        </div>
+
+        <!-- BOB TERMINAL (CLIENT B) -->
+        <div class="chat-terminal-card bob-terminal">
+          <div>
+            <div class="chat-header">
+              <div class="chat-user-info">
+                <div class="avatar-circle" style="width: 40px; height: 40px; font-size: 1.1rem; background: rgba(168, 85, 247, 0.15); color: var(--accent-violet); border: 2px solid var(--accent-violet);">B</div>
+                <div>
+                  <h4 style="font-size: 1.15rem; color: #fff;">Bob</h4>
+                  <div style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--text-dim);">
+                    <div class="chat-status-dot"></div> Encrypted with Key K
+                  </div>
+                </div>
+              </div>
+              <span class="badge badge-violet" style="font-size: 0.85rem;">Receiver B</span>
+            </div>
+
+            <!-- Feed -->
+            <div class="chat-feed-box" id="bob-chat-feed">
+              <div class="chat-bubble sent bob-sent">
+                <div>Hello Alice! Our Diffie-Hellman key exchange was successful. We can now message in secret!</div>
+                <div class="bubble-meta">Encrypted with Key K = 2</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Input Form -->
+          <div class="chat-input-form">
+            <div class="chat-input-row">
+              <input type="text" id="bob-msg-input" class="chat-msg-input" placeholder="Type a reply as Bob..." value="Confirmed Alice, bringing the security tokens!">
+              <button id="btn-bob-send" class="btn btn-violet" style="padding: 0.65rem 1.15rem; font-size: 0.95rem;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Send
+              </button>
+            </div>
+            <div style="font-size: 0.875rem; color: var(--text-dim);">
+              Bob can reply back using the matching secret key K.
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- CIPHER INSPECTOR SANDBOX (EDUCATIONAL STEP-BY-STEP BREAKDOWN) -->
+      <section class="cipher-inspector-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+          <h3 style="font-size: 1.25rem; color: #fff; display: flex; align-items: center; gap: 0.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+            Cryptographic Transmission Inspector
+          </h3>
+          <span class="badge badge-green">End-to-End Encryption</span>
+        </div>
+        <p style="font-size: 0.975rem; color: var(--text-muted);">
+          Inspect how each message is scrambled using a keystream derived from the Diffie-Hellman shared key <span class="code-font">K</span>.
+        </p>
+
+        <div class="inspector-grid">
+          <!-- Step 1: Plaintext -->
+          <div class="inspector-step-box">
+            <h4><span class="badge badge-cyan">1</span> Original Plaintext</h4>
+            <div class="inspector-code-box" id="inspect-plain">Meet me at 5 PM at the secure lab!</div>
+            <span style="font-size: 0.875rem; color: var(--text-dim); margin-top: 0.4rem; display: block;">Readable text created on sender device.</span>
+          </div>
+
+          <!-- Step 2: Key K Stream -->
+          <div class="inspector-step-box">
+            <h4><span class="badge badge-amber">2</span> Symmetric Session Key</h4>
+            <div class="inspector-code-box" id="inspect-key" style="color: #fbbf24;">K = 2 (Diffie-Hellman Secret)</div>
+            <span style="font-size: 0.875rem; color: var(--text-dim); margin-top: 0.4rem; display: block;">Agreed upon without ever transmitting across wire.</span>
+          </div>
+
+          <!-- Step 3: Raw Ciphertext Hex -->
+          <div class="inspector-step-box">
+            <h4><span class="badge badge-red">3</span> Ciphertext on Wire (Hex)</h4>
+            <div class="inspector-code-box" id="inspect-cipher" style="color: #fb7185;">(Send a message to view Hex bytes)</div>
+            <span style="font-size: 0.875rem; color: var(--text-dim); margin-top: 0.4rem; display: block;">Only scrambled bytes travel across open network.</span>
+          </div>
+
+          <!-- Step 4: Decrypted Output -->
+          <div class="inspector-step-box">
+            <h4><span class="badge badge-violet">4</span> Decrypted at Destination</h4>
+            <div class="inspector-code-box" id="inspect-decrypted" style="color: #a855f7;">(Awaiting transmission)</div>
+            <span style="font-size: 0.875rem; color: var(--text-dim); margin-top: 0.4rem; display: block;">Decrypted perfectly using matching key K.</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>CryptoLab &bull; Academic Cryptography Project</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="exchange.html">Simulator</a></li>
+        <li><a href="messaging.html">Secret Messaging</a></li>
+        <li><a href="attack.html">MITM Lab</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/messaging.js"></script>
+</body>
+</html>

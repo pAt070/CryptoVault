@@ -1,0 +1,345 @@
+/* ==========================================================================
+   CryptoLab - Diffie-Hellman Key Exchange Simulator
+   Secret Messaging Lab Styles (High-Legibility Theme)
+   ========================================================================== */
+
+.msg-lab-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+/* Key Synchronizer Top Bar */
+.key-sync-banner {
+  background: linear-gradient(135deg, rgba(18, 22, 32, 0.96), rgba(28, 22, 38, 0.96));
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+}
+
+.key-sync-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.key-sync-badge {
+  font-family: var(--font-mono);
+  font-size: 1.65rem;
+  font-weight: 850;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.16);
+  border: 2px solid rgba(245, 158, 11, 0.45);
+  padding: 0.45rem 1.25rem;
+  border-radius: var(--radius-md);
+  text-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+}
+
+.key-sync-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Three-Column Messaging Arena */
+.messaging-arena {
+  display: grid;
+  grid-template-columns: 1fr 350px 1fr;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+/* Chat Terminal Cards */
+.chat-terminal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(16px);
+  position: relative;
+  min-height: 560px;
+  box-shadow: var(--shadow-sm);
+}
+
+.chat-terminal-card.alice-terminal {
+  border-top: 4px solid var(--accent-cyan);
+}
+
+.chat-terminal-card.bob-terminal {
+  border-top: 4px solid var(--accent-violet);
+}
+
+/* Chat Header */
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid var(--border-card);
+  margin-bottom: 1.25rem;
+}
+
+.chat-user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.chat-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 10px #34d399;
+}
+
+/* Message Feed Scroll Area */
+.chat-feed-box {
+  flex: 1;
+  background: #050813;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 300px;
+  min-height: 220px;
+  margin-bottom: 1.25rem;
+  scrollbar-width: thin;
+}
+
+/* Chat Bubbles - Large, clean typography */
+.chat-bubble {
+  max-width: 85%;
+  padding: 0.95rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.chat-bubble.sent {
+  align-self: flex-end;
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #ffffff;
+  border-bottom-right-radius: 3px;
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.15);
+}
+
+.chat-bubble.sent.bob-sent {
+  background: rgba(192, 132, 252, 0.2);
+  border-color: rgba(192, 132, 252, 0.45);
+  box-shadow: 0 2px 10px rgba(192, 132, 252, 0.15);
+}
+
+.chat-bubble.received {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-card);
+  color: #ffffff;
+  border-bottom-left-radius: 3px;
+}
+
+.bubble-meta {
+  font-size: 0.825rem;
+  color: var(--text-dim);
+  margin-top: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 600;
+}
+
+/* Input Form Area */
+.chat-input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.chat-msg-input {
+  flex: 1;
+  background: #090b10;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.15rem;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 550;
+}
+
+.chat-msg-input:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.35);
+}
+
+/* Center Wire & Eve Sniffer */
+.wire-sniffer-card {
+  background: rgba(18, 21, 30, 0.95);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(16px);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.sniffer-hud {
+  background: rgba(35, 12, 20, 0.9);
+  border: 1px solid rgba(251, 113, 133, 0.45);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.sniffer-hud-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 750;
+  color: var(--accent-red);
+  margin-bottom: 0.65rem;
+}
+
+.intercepted-box {
+  background: #080204;
+  border: 1px solid rgba(251, 113, 133, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 0.95rem;
+  font-family: var(--font-mono);
+  font-size: 0.925rem;
+  color: #fecdd3;
+  min-height: 95px;
+  max-height: 140px;
+  overflow-y: auto;
+  word-break: break-all;
+  line-height: 1.6;
+}
+
+/* Animated Ciphertext Wire Transit */
+.transit-wire-arena {
+  position: relative;
+  height: 175px;
+  background: #07090e;
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-md);
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.transit-wire-beam {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.5), rgba(251, 113, 133, 0.7), rgba(192, 132, 252, 0.5));
+}
+
+.flying-cipher-packet {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.45rem 1.15rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.925rem;
+  font-weight: 800;
+  white-space: nowrap;
+  background: rgba(251, 113, 133, 0.25);
+  color: #ffe4e6;
+  border: 2px solid var(--accent-red);
+  box-shadow: 0 0 24px rgba(251, 113, 133, 0.6);
+  z-index: 20;
+  transition: left 2s cubic-bezier(0.4, 0, 0.2, 1), right 2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  left: 10px;
+  opacity: 0;
+}
+
+.flying-cipher-packet.flying-to-bob {
+  opacity: 1;
+  left: calc(100% - 110px);
+}
+
+.flying-cipher-packet.flying-to-alice {
+  opacity: 1;
+  right: calc(100% - 110px);
+}
+
+/* Cipher Inspector Sandbox Card */
+.cipher-inspector-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-sm);
+}
+
+.inspector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.inspector-step-box {
+  background: rgba(10, 15, 29, 0.85);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 1.35rem;
+}
+
+.inspector-step-box h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inspector-code-box {
+  background: #04060c;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  padding: 0.95rem 1.15rem;
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 600;
+  word-break: break-all;
+  min-height: 52px;
+}
+
+@media (max-width: 1024px) {
+  .messaging-arena {
+    grid-template-columns: 1fr;
+  }
+}
