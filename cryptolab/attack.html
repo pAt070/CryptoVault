@@ -80,11 +80,11 @@
 
       <!-- Action Toolbar (Reset & Explain) -->
       <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-bottom: 1rem;">
-        <button id="btn-reset-attack" class="btn btn-secondary" style="font-size: 0.925rem; padding: 0.55rem 1.1rem;">
+        <button id="btn-reset-attack" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.45rem 0.95rem;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
           Reset Attack Simulation
         </button>
-        <button id="btn-explain-attack" class="btn btn-secondary" style="font-size: 0.925rem; padding: 0.55rem 1.1rem;">
+        <button id="btn-explain-attack" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.45rem 0.95rem;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
           Explain Attack &amp; Security
         </button>
@@ -108,20 +108,20 @@
 
           <div class="math-block" style="margin-top: 0;">
             <div class="math-row">
-              <span style="font-size: 0.95rem; color: var(--text-dim);">Private Secret (a):</span>
+              <span style="font-size: 0.85rem; color: var(--text-dim);">Private Secret (a):</span>
               <span class="code-font" style="color: #fb7185; font-weight: 700;">a = 6</span>
             </div>
             <div class="math-row">
-              <span style="font-size: 0.95rem; color: var(--text-dim);">Public Key (A):</span>
+              <span style="font-size: 0.85rem; color: var(--text-dim);">Public Key (A):</span>
               <span class="code-font" style="color: var(--accent-cyan); font-weight: 700;">A = 5^6 mod 23 = 8</span>
             </div>
             <div class="math-row" style="margin-bottom: 0;">
-              <span style="font-size: 0.95rem; color: var(--text-dim);">Computed Secret (K):</span>
+              <span style="font-size: 0.85rem; color: var(--text-dim);">Computed Secret (K):</span>
               <span class="code-font" id="alice-computed-k" style="color: #34d399; font-weight: 700;">K = 2</span>
             </div>
           </div>
 
-          <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 1rem;">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
             Alice transmits her public value <span class="code-font" style="color: var(--accent-cyan);">A = 8</span> onto the unencrypted communication channel.
           </p>
         </div>
@@ -132,8 +132,8 @@
             <div class="eve-title">
               <div class="eve-avatar">E</div>
               <div>
-                <h3 style="color: var(--accent-red); font-size: 1.25rem;">Eve (Adversary)</h3>
-                <span style="font-size: 0.9rem; color: #fecdd3;">Channel Monitor &amp; Interceptor</span>
+                <h3 style="color: var(--accent-red); font-size: 1.15rem;">Eve (Adversary)</h3>
+                <span style="font-size: 0.8rem; color: #fecdd3;">Channel Monitor &amp; Interceptor</span>
               </div>
             </div>
             <span class="badge badge-red">Adversary Console</span>
@@ -193,14 +193,14 @@
           <!-- SCENARIO A: PASSIVE EAVESDROPPING SECTION -->
           <div id="passive-section">
             <div style="margin-bottom: 0.75rem;">
-              <h4 style="font-size: 1.15rem; margin-bottom: 0.35rem; color: #fff;">Discrete Logarithm Challenge</h4>
-              <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem; color: #fff;">Discrete Logarithm Challenge</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
                 Eve holds <span class="code-font">p = 23</span>, <span class="code-font">g = 5</span>, and <span class="code-font">A = 8</span>. To recover Alice's secret <span class="code-font">a</span>, she must solve for <span class="code-font">x</span> in: <strong class="code-font" style="color: #fb7185;">5<sup>x</sup> &equiv; 8 (mod 23)</strong>.
               </p>
             </div>
 
             <div class="eve-actions" style="margin-bottom: 1rem;">
-              <button id="btn-brute-force" class="btn btn-attack" style="width: 100%; font-size: 0.95rem; padding: 0.65rem 1rem;">
+              <button id="btn-brute-force" class="btn btn-attack" style="width: 100%; font-size: 0.88rem; padding: 0.55rem 0.95rem;">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 Attempt to Discover Secret (Brute Force Discrete Log)
               </button>
@@ -217,8 +217,8 @@
           <!-- SCENARIO B: ACTIVE MAN-IN-THE-MIDDLE (MITM) SECTION -->
           <div id="mitm-section" style="display: none;">
             <div style="margin-bottom: 0.75rem;">
-              <h4 style="font-size: 1.15rem; margin-bottom: 0.35rem; color: var(--accent-red);">Active MITM Key Injection</h4>
-              <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem; color: var(--accent-red);">Active MITM Key Injection</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
                 Eve actively intercepts the communication channel. She replaces Alice's and Bob's public keys with her own forged key <span class="code-font" style="color: var(--accent-red);">E = 17</span> (derived from private key <span class="code-font">e = 7</span>), splitting the session into <strong>two distinct encrypted tunnels</strong>.
               </p>
             </div>
@@ -228,7 +228,7 @@
               <div class="mitm-tunnel-row">
                 <div>
                   <strong>Tunnel 1 (Alice &larr;&rarr; Eve):</strong><br>
-                  <span style="font-size: 0.925rem; color: var(--text-dim);">Alice computes: K_AE = E^a mod p = 17^6 mod 23</span>
+                  <span style="font-size: 0.825rem; color: var(--text-dim);">Alice computes: K_AE = E^a mod p = 17^6 mod 23</span>
                 </div>
                 <span class="tunnel-tag" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-cyan);">K_AE = <span id="mitm-key-ae">12</span></span>
               </div>
@@ -236,7 +236,7 @@
               <div class="mitm-tunnel-row" style="margin-bottom: 0;">
                 <div>
                   <strong>Tunnel 2 (Eve &larr;&rarr; Bob):</strong><br>
-                  <span style="font-size: 0.925rem; color: var(--text-dim);">Bob computes: K_EB = E^b mod p = 17^15 mod 23</span>
+                  <span style="font-size: 0.825rem; color: var(--text-dim);">Bob computes: K_EB = E^b mod p = 17^15 mod 23</span>
                 </div>
                 <span class="tunnel-tag" style="background: rgba(168, 85, 247, 0.15); color: var(--accent-violet);">K_EB = <span id="mitm-key-eb">15</span></span>
               </div>
@@ -244,30 +244,30 @@
 
             <!-- Interactive Tamper Box -->
             <div class="tamper-box">
-              <h5 style="font-size: 0.95rem; color: #fb7185; margin-bottom: 0.5rem; text-transform: uppercase;">
+              <h5 style="font-size: 0.85rem; color: #fb7185; margin-bottom: 0.5rem; text-transform: uppercase;">
                 Interactive Message Tampering Demonstration:
               </h5>
               
               <div class="tamper-grid">
                 <div>
-                  <span style="font-size: 0.925rem; color: var(--text-dim);">Alice's Plaintext Message:</span>
+                  <span style="font-size: 0.825rem; color: var(--text-dim);">Alice's Plaintext Message:</span>
                   <div class="msg-bubble alice-msg" id="alice-msg-text">Authorize payment of $50</div>
                 </div>
 
                 <div style="text-align: center;">
-                  <button id="btn-tamper-msg" class="btn btn-attack" style="padding: 0.5rem 0.85rem; font-size: 0.875rem;">
+                  <button id="btn-tamper-msg" class="btn btn-attack" style="padding: 0.42rem 0.8rem; font-size: 0.825rem;">
                     Intercept &amp; Tamper &rarr;
                   </button>
                 </div>
 
                 <div>
-                  <span style="font-size: 0.925rem; color: var(--text-dim);">Eve's Forged Replacement:</span>
-                  <input type="text" id="eve-msg-input" class="sim-input" style="padding: 0.5rem 0.75rem; font-size: 0.925rem;" value="Authorize payment of $5,000 to Eve">
+                  <span style="font-size: 0.825rem; color: var(--text-dim);">Eve's Forged Replacement:</span>
+                  <input type="text" id="eve-msg-input" class="sim-input" style="padding: 0.42rem 0.65rem; font-size: 0.85rem;" value="Authorize payment of $5,000 to Eve">
                 </div>
               </div>
 
               <div style="margin-top: 0.75rem;">
-                <span style="font-size: 0.925rem; color: var(--text-dim);">Bob Receives &amp; Decrypts:</span>
+                <span style="font-size: 0.825rem; color: var(--text-dim);">Bob Receives &amp; Decrypts:</span>
                 <div class="msg-bubble bob-msg" id="bob-received-msg">
                   <span style="color: var(--text-dim);">(Click "Intercept & Tamper" to observe Bob's received payload)</span>
                 </div>
@@ -291,20 +291,20 @@
 
           <div class="math-block" style="margin-top: 0;">
             <div class="math-row">
-              <span style="font-size: 0.95rem; color: var(--text-dim);">Private Secret (b):</span>
+              <span style="font-size: 0.85rem; color: var(--text-dim);">Private Secret (b):</span>
               <span class="code-font" style="color: #fb7185; font-weight: 700;">b = 15</span>
             </div>
             <div class="math-row">
-              <span style="font-size: 0.95rem; color: var(--text-dim);">Public Key (B):</span>
+              <span style="font-size: 0.85rem; color: var(--text-dim);">Public Key (B):</span>
               <span class="code-font" style="color: var(--accent-violet); font-weight: 700;">B = 5^15 mod 23 = 19</span>
             </div>
             <div class="math-row" style="margin-bottom: 0;">
-              <span style="font-size: 0.95rem; color: var(--text-dim);">Computed Secret (K):</span>
+              <span style="font-size: 0.85rem; color: var(--text-dim);">Computed Secret (K):</span>
               <span class="code-font" id="bob-computed-k" style="color: #34d399; font-weight: 700;">K = 2</span>
             </div>
           </div>
 
-          <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 1rem;">
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
             Bob transmits his public value <span class="code-font" style="color: var(--accent-violet);">B = 19</span> across the unencrypted wire to Alice.
           </p>
         </div>
@@ -314,8 +314,8 @@
       <!-- CRITICAL SECURITY DISTINCTION CALLOUT -->
       <div class="alert-compromised" style="background: rgba(18, 21, 30, 0.9); border-color: rgba(16, 185, 129, 0.35);">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        <div style="font-size: 0.95rem; color: var(--text-main); line-height: 1.6;">
-          <strong style="color: var(--accent-cyan); display: block; font-size: 1.05rem; margin-bottom: 0.25rem;">
+        <div style="font-size: 0.875rem; color: var(--text-main); line-height: 1.6;">
+          <strong style="color: var(--accent-cyan); display: block; font-size: 0.98rem; margin-bottom: 0.25rem;">
             Crucial Security Concept: Passive Eavesdropping vs. Active Man-in-the-Middle
           </strong>
           Passive eavesdropping <em>never</em> automatically exposes the shared secret if proper cryptographic parameters are used; the Discrete Logarithm barrier protects the exchange. However, <strong>unauthenticated Diffie-Hellman cannot resist active Man-in-the-Middle attacks</strong> because Alice has no way of verifying whether public key <span class="code-font">B</span> originated from Bob or from Eve!
@@ -337,10 +337,10 @@
             <div class="badge badge-red" style="margin-bottom: 0.5rem;">Academic Toy Parameters</div>
             <h3>Small Prime (p = 23)</h3>
             <div class="comp-metric">5 Bits &bull; 22 Trials</div>
-            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
               Because the prime modulus has only 22 possible non-zero remainders, an attacker's laptop can test every candidate exponent in under 1 millisecond. This makes it ideal for educational demonstration, but completely insecure for real-world usage.
             </p>
-            <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-dim);">
+            <div style="margin-top: 1rem; font-size: 0.825rem; color: var(--text-dim);">
               Brute-force complexity: <span class="code-font">O(p) = 22 iterations</span>
             </div>
           </div>
@@ -350,10 +350,10 @@
             <div class="badge badge-green" style="margin-bottom: 0.5rem;">Production Standard (TLS 1.3 / SSH)</div>
             <h3>MODP Group 14 (p &ge; 2048 Bits)</h3>
             <div class="comp-metric">2048 Bits &bull; &gt; 10<sup>616</sup> Combinations</div>
-            <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
               Modern protocols use 2048-bit to 4096-bit primes, or 256-bit Elliptic Curves (Curve25519). Even with the best known algorithms (General Number Field Sieve), solving the discrete logarithm would take billions of years utilizing all global supercomputers combined.
             </p>
-            <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-dim);">
+            <div style="margin-top: 1rem; font-size: 0.825rem; color: var(--text-dim);">
               GNFS complexity: <span class="code-font">L_p[1/3, 1.923] &approx; 2^112 operations</span>
             </div>
           </div>
@@ -369,9 +369,9 @@
       <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">&times;</button>
       
       <div class="badge badge-red" style="margin-bottom: 0.75rem;">Theoretical Defense Guide</div>
-      <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Diffie-Hellman Security &amp; MITM Defense</h2>
+      <h2 style="font-size: 1.35rem; margin-bottom: 1rem;">Diffie-Hellman Security &amp; MITM Defense</h2>
 
-      <div style="font-size: 0.975rem; color: var(--text-muted); line-height: 1.6; display: flex; flex-direction: column; gap: 1rem;">
+      <div style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; display: flex; flex-direction: column; gap: 1rem;">
         <p>
           <strong style="color: #fff;">1. Why is Passive Eavesdropping Ineffective Against Production DH?</strong><br>
           In classical Diffie-Hellman, the eavesdropper sees \(p\), \(g\), \(A = g^a \bmod p\), and \(B = g^b \bmod p\). Finding \(K = g^{ab} \bmod p\) from \(A\) and \(B\) is called the <strong>Computational Diffie-Hellman (CDH) problem</strong>, which is believed to be computationally equivalent to the <strong>Discrete Logarithm Problem (DLP)</strong>. When \(p\) is sufficiently large (&ge; 2048 bits), no polynomial-time algorithm exists to solve this problem.

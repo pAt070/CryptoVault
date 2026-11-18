@@ -14,7 +14,7 @@
   background: linear-gradient(135deg, rgba(18, 22, 32, 0.96), rgba(28, 22, 38, 0.96));
   border: 1px solid var(--border-accent);
   border-radius: var(--radius-lg);
-  padding: 1.5rem 2.25rem;
+  padding: 1.15rem 1.65rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,12 +31,12 @@
 
 .key-sync-badge {
   font-family: var(--font-mono);
-  font-size: 1.65rem;
+  font-size: 1.35rem;
   font-weight: 850;
   color: #fbbf24;
   background: rgba(245, 158, 11, 0.16);
   border: 2px solid rgba(245, 158, 11, 0.45);
-  padding: 0.45rem 1.25rem;
+  padding: 0.35rem 1rem;
   border-radius: var(--radius-md);
   text-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
 }
@@ -181,9 +181,9 @@
   background: #090b10;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
-  padding: 0.85rem 1.15rem;
+  padding: 0.7rem 1rem;
   color: #ffffff;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 550;
 }
 
@@ -211,47 +211,47 @@
   background: rgba(35, 12, 20, 0.9);
   border: 1px solid rgba(251, 113, 133, 0.45);
   border-radius: var(--radius-md);
-  padding: 1.15rem;
-  margin-bottom: 1.25rem;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1rem;
 }
 
 .sniffer-hud-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 750;
   color: var(--accent-red);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.55rem;
 }
 
 .intercepted-box {
   background: #080204;
   border: 1px solid rgba(251, 113, 133, 0.35);
   border-radius: var(--radius-sm);
-  padding: 0.95rem;
+  padding: 0.85rem;
   font-family: var(--font-mono);
-  font-size: 0.925rem;
+  font-size: 0.85rem;
   color: #fecdd3;
-  min-height: 95px;
-  max-height: 140px;
+  min-height: 85px;
+  max-height: 130px;
   overflow-y: auto;
   word-break: break-all;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 /* Animated Ciphertext Wire Transit */
 .transit-wire-arena {
   position: relative;
-  height: 175px;
+  height: 165px;
   background: #07090e;
   border: 1px dashed rgba(255, 255, 255, 0.22);
   border-radius: var(--radius-md);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.15rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 1rem;
+  padding: 0.85rem;
   overflow: hidden;
 }
 
@@ -268,10 +268,10 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  padding: 0.45rem 1.15rem;
+  padding: 0.38rem 0.95rem;
   border-radius: 999px;
   font-family: var(--font-mono);
-  font-size: 0.925rem;
+  font-size: 0.85rem;
   font-weight: 800;
   white-space: nowrap;
   background: rgba(251, 113, 133, 0.25);

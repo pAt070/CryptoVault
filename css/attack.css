@@ -23,13 +23,13 @@
 .mode-tab-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.95rem 1.85rem;
+  gap: 0.65rem;
+  padding: 0.72rem 1.45rem;
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
   color: var(--text-muted);
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -334,9 +334,9 @@
 
 .comp-metric {
   font-family: var(--font-mono);
-  font-size: 2.1rem;
+  font-size: 1.75rem;
   font-weight: 850;
-  margin: 1rem 0;
+  margin: 0.85rem 0;
 }
 
 .comp-card.toy-card .comp-metric {
